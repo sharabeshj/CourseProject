@@ -6,18 +6,6 @@
 <hr>
 <div class="row">
   <div class="col-sm-12" *ngFor="let recipeData of this.recipes;">
-    <a href="#" class="list-group-item clearfix" *ngIf="recipeData.getData(); let recipe">
-      <div class="pull-left">
-        <h4 class="list-group-item-heading">
-          {{ recipe.name }}
-        </h4>
-        <p class="list-group-item-text">{{ recipe.description}}</p>
-      </div>
-      <div class="pull-right">
-        <img
-          [src]= "recipe.imageUrl"
-          alt="image" class="img-responsive" style="max-height: 50px">
-      </div>
-    </a>
+    <app-recipe-item [recipeData]="recipeData.getData()" (click)="onSelectRecipe(recipeData.getData())"></app-recipe-item>
   </div>
 </div>

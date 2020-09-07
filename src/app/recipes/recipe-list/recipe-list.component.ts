@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Recipe, RecipeInterface} from '../Recipe';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Recipe, RecipeData, RecipeInterface} from '../Recipe';
 
 @Component({
   selector: 'app-recipe-list',
@@ -9,6 +9,7 @@ import {Recipe, RecipeInterface} from '../Recipe';
 export class RecipeListComponent implements OnInit {
 
   recipes: RecipeInterface[];
+  @Output() selectRecipeEmitter: EventEmitter<RecipeData> = new EventEmitter<RecipeData>();
 
   constructor() {
     this.recipes = [];
@@ -19,6 +20,10 @@ export class RecipeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onSelectRecipe(data: RecipeData): void {
+    this.selectRecipeEmitter.emit(data);
   }
 
 }

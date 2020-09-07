@@ -1,2 +1,15 @@
-<div style="margin-bottom: 10px"></div>
-<!-- /.mb-10 -->
+<div style="margin-bottom: 10px">
+  <a href="#" class="list-group-item clearfix">
+    <div class="pull-left">
+      <h4 class="list-group-item-heading">
+        {{ recipeData.name }}
+      </h4>
+      <p class="list-group-item-text">{{ recipeData.description}}</p>
+    </div>
+    <div class="pull-right">
+      <img
+        [src]= "recipeData.imageUrl"
+        alt="image" class="img-responsive" style="max-height: 50px">
+    </div>
+  </a>
+</div>

@@ -1,12 +1,12 @@
 <header>
-  <app-header></app-header>
+  <app-header (routeChangeEmitter)="onRouteChange($event)" [currentRoute]="this.currentRoute"></app-header>
 </header>
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12" *ngIf="this.currentRoute == 'Recipes'">
       <app-recipes></app-recipes>
     </div>
-    <div class="col-sm-12">
+    <div class="col-sm-12" *ngIf="this.currentRoute == 'Shopping List'">
       <app-shopping-list></app-shopping-list>
     </div>
   </div>

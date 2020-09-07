@@ -8,16 +8,16 @@ import {Ingredient, IngredientInterface} from '../shared/Ingredient';
 })
 export class ShoppingListComponent implements OnInit {
 
-  public ingredients: IngredientInterface[];
+  public ingredients: IngredientInterface[] = [];
 
   constructor() {
-    this.ingredients = [];
-    for (let i = 0; i < 5; i++) {
-      this.ingredients.push(new Ingredient('Ingredient', 10));
-    }
   }
 
   ngOnInit(): void {
+  }
+
+  onAdded(data: { name: string, amount: number }): void {
+    this.ingredients.push(new Ingredient(data.name, data.amount));
   }
 
 }

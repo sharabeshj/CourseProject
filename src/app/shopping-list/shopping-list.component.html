@@ -1,5 +1,5 @@
 <div style="margin-top: 10px;">
-  <app-shopping-list-edit></app-shopping-list-edit>
+  <app-shopping-list-edit (addEmiiter)="onAdded($event)"></app-shopping-list-edit>
   <hr>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let ingredientData of this.ingredients;">
