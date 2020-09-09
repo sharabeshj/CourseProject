@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Recipe, RecipeData, RecipeInterface} from '../Recipe';
+import {Component, OnInit} from '@angular/core';
+import {RecipeData, RecipeInterface} from '../Recipe';
+import {RecipeService} from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -8,22 +9,17 @@ import {Recipe, RecipeData, RecipeInterface} from '../Recipe';
 })
 export class RecipeListComponent implements OnInit {
 
-  recipes: RecipeInterface[];
-  @Output() selectRecipeEmitter: EventEmitter<RecipeData> = new EventEmitter<RecipeData>();
+  public recipes: RecipeInterface[];
 
-  constructor() {
-    this.recipes = [];
-    for (let i = 0; i < 5; i++) {
-      this.recipes.push(new Recipe('Recipe Name',
-        'http://cdn.differencebetween.net/wp-content/uploads/2012/01/Difference-Between-Example-and-Sample.jpg', 'description'));
-    }
+  constructor(private recipeService: RecipeService) {
   }
 
   ngOnInit(): void {
+    this.recipes = this.recipeService.recipes;
   }
 
   onSelectRecipe(data: RecipeData): void {
-    this.selectRecipeEmitter.emit(data);
+    this.recipeService.onSelectRecipe(data);
   }
 
 }
