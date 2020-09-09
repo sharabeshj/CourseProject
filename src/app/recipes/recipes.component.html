@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-5 col-sm-12">
-    <app-recipe-list (selectRecipeEmitter)="onSelectRecipe($event)"></app-recipe-list>
+    <app-recipe-list></app-recipe-list>
   </div>
   <div class="col-md-7 col-sm-12">
-    <app-recipe-detail [recipeData]="selectedRecipe" *ngIf="selectedRecipe; else noRecipe"></app-recipe-detail>
+    <app-recipe-detail [recipeData]="selectedRecipe" *ngIf="selectedRecipe.name !== ''; else noRecipe"></app-recipe-detail>
     <ng-template #noRecipe>Please Select a Recipe</ng-template>
   </div>
 </div>
